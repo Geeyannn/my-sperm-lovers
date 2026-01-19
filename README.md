@@ -1,0 +1,1 @@
+A morality-based puzzle/action game where you play as a self-aware sperm with a shotgun navigating the reproductive system. Kill everyone or solve puzzles—both paths are morally compromised. Features Doorethy, a sassy flesh door, and a secret ending that questions why you're racing at all. Made for "The Path Less Taken" game jam.
