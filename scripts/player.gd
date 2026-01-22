@@ -33,11 +33,10 @@ var health: int
 var is_invincible := false
 var knockback_velocity := Vector3.ZERO
 
-
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	health = max_health
-	add_to_group("player")
-
+	add_to_group("player")  
 
 func _physics_process(delta: float) -> void:
 	handle_aiming_input()
