@@ -8,6 +8,9 @@ extends CharacterBody3D
 @export var attack_damage: int = 2
 @export var knockback_force: float = 12.0
 @export var attack_cooldown: float = 1.0
+@export var stop_distance: float = 1.5
+@export var separation_radius: float = 3.0
+@export var separation_force: float = 2.0
 
 var wander_target: Vector3
 var home_position: Vector3
@@ -32,11 +35,16 @@ func _physics_process(_delta: float) -> void:
 	# Check for nearby targets (player or sibling sperm)
 	detect_targets()
 
+	var base_velocity := Vector3.ZERO
+
 	if is_chasing and is_instance_valid(current_target):
-		# CHASE state: move toward target at chase speed
-		var direction = (current_target.global_position - global_position).normalized()
-		direction.y = 0
-		velocity = direction * chase_speed
+		var dist_to_target = global_position.distance_to(current_target.global_position)
+
+		# Only move if not within stop distance
+		if dist_to_target > stop_distance:
+			var direction = (current_target.global_position - global_position).normalized()
+			direction.y = 0
+			base_velocity = direction * chase_speed
 	else:
 		# PATROL state: wander around
 		is_chasing = false
@@ -44,11 +52,15 @@ func _physics_process(_delta: float) -> void:
 
 		var direction = (wander_target - global_position).normalized()
 		direction.y = 0
-		velocity = direction * move_speed
+		base_velocity = direction * move_speed
 
 		# Pick new target when close
 		if global_position.distance_to(wander_target) < 0.5:
 			pick_new_wander_target()
+
+	# Add separation from other white blood cells
+	var separation = get_separation_from_other_wbcs()
+	velocity = base_velocity + separation
 
 	move_and_slide()
 
@@ -63,6 +75,26 @@ func pick_new_wander_target() -> void:
 		global_position.y,
 		home_position.z + randf_range(-wander_range, wander_range)
 	)
+
+
+func get_separation_from_other_wbcs() -> Vector3:
+	var separation := Vector3.ZERO
+
+	for entity in get_tree().get_nodes_in_group("enemies"):
+		if entity == self:
+			continue
+		# Only separate from other white blood cells (entities without become_aggro)
+		if entity.has_method("become_aggro"):
+			continue
+
+		var dist = global_position.distance_to(entity.global_position)
+		if dist < separation_radius and dist > 0.01:
+			var away_dir = (global_position - entity.global_position).normalized()
+			away_dir.y = 0
+			# Stronger push when closer
+			separation += away_dir * (separation_force * (1.0 - dist / separation_radius))
+
+	return separation
 
 
 func detect_targets() -> void:

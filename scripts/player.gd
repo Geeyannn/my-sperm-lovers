@@ -12,7 +12,7 @@ extends CharacterBody3D
 
 # Health
 @export var max_health: int = 10
-@export var knockback_force: float = 8.0
+@export var knockback_force: float = 15.0
 @export var invincibility_duration: float = 0.3
 
 @onready var shooting_point: Node3D = $ShootingPoint
@@ -40,12 +40,17 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# Decay knockback over time
-	knockback_velocity = knockback_velocity.move_toward(Vector3.ZERO, 30.0 * delta)
 	handle_aiming_input()
 	handle_movement()
 	handle_aim()
+
+	# Apply knockback on top of movement velocity
+	velocity += knockback_velocity
+
 	move_and_slide()
+
+	# Decay knockback after movement (so first frame gets full knockback)
+	knockback_velocity = knockback_velocity.move_toward(Vector3.ZERO, 40.0 * delta)
 
 func handle_aiming_input() -> void:
 	is_aiming = Input.is_action_pressed("aim")
@@ -64,8 +69,8 @@ func handle_movement() -> void:
 	
 	input_dir = input_dir.normalized()
 	var current_speed = (move_speed * aim_move_speed_multiplier) if is_aiming else move_speed
-	velocity.x = input_dir.x * current_speed + knockback_velocity.x
-	velocity.z = input_dir.z * current_speed + knockback_velocity.z
+	velocity.x = input_dir.x * current_speed
+	velocity.z = input_dir.z * current_speed
 
 func handle_aim() -> void:
 	var camera := get_viewport().get_camera_3d()

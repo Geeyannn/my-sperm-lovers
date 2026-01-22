@@ -1,10 +1,10 @@
 [gd_scene load_steps=33 format=4 uid="uid://dc3nrto6h6374"]
 
-[ext_resource type="Script" uid="uid://c2vv85mquw12b" path="res://scripts/secret_ending.gd" id="1_2mu0v"]
+[ext_resource type="Script" path="res://scripts/secret_ending.gd" id="1_2mu0v"]
 [ext_resource type="PackedScene" uid="uid://qxin0n6vbcb7" path="res://scenes/player/player.tscn" id="1_jbqir"]
 [ext_resource type="Script" uid="uid://c2xaendkngky8" path="res://scripts/camera_follow.gd" id="2_yautc"]
 [ext_resource type="PackedScene" uid="uid://hy4mbrybw7mr" path="res://scenes/enemies/sibling_sperm.tscn" id="3_fr1um"]
-[ext_resource type="Script" uid="uid://cofp6hemc4wv8" path="res://scripts/next_zone_enabler.gd" id="3_os2yb"]
+[ext_resource type="Script" path="res://scripts/next_zone_enabler.gd" id="3_os2yb"]
 [ext_resource type="PackedScene" uid="uid://bj7gawixh3dxo" path="res://scenes/enemies/white_blood_cell.tscn" id="4_v45ci"]
 [ext_resource type="Texture2D" uid="uid://c0xigj7fpr2oc" path="res://art/textures/tileset.png" id="7_hfwtw"]
 [ext_resource type="Script" uid="uid://c2lxt2vjdjb4b" path="res://addons/TileMapLayer3D/nodes/static_collision_body.gd" id="8_hfwtw"]
@@ -316,10 +316,10 @@ shape = ExtResource("9_2mu0v")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, 0)
 
 [node name="SiblingSperm" parent="." instance=ExtResource("3_fr1um")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07938719, 1.1259284, -4.2321634)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07938719, 1.1259284, -7.1576486)
 
 [node name="SiblingSperm2" parent="." instance=ExtResource("3_fr1um")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9690824, 0.5999994, -2.6115577)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9690824, 0.5999994, -4.2736645)
 
 [node name="WhiteBloodCell" parent="." instance=ExtResource("4_v45ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4176197, 1.6586838, -6.120698)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0713403, 1.6586838, -9.263895)

@@ -92,6 +92,8 @@ func alert_nearby_siblings(aggro_target: Node3D) -> void:
 
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
+	if not is_aggro:
+		return
 	if not can_attack:
 		return
 	if not body.is_in_group("player"):
