@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var move_speed: float = 2.0
 @export var wander_range: float = 5.0
+@export var health: int = 2
 
 var wander_target: Vector3
 var home_position: Vector3
@@ -39,6 +40,9 @@ func pick_new_wander_target() -> void:
 	)
 
 
-func take_damage() -> void:
-	print("Sibling died!")
-	queue_free()
+func take_damage(amount: int) -> void:
+	health -= amount
+	print("Sibling took ", amount, " damage! Health: ", health)
+	if health <= 0:
+		print("Sibling died!")
+		queue_free()
