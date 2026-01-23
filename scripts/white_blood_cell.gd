@@ -11,6 +11,7 @@ extends CharacterBody3D
 @export var stop_distance: float = 1.5
 @export var separation_radius: float = 3.0
 @export var separation_force: float = 2.0
+@export var model_rotation_offset: float = -PI/2  # Offset to align model forward with movement
 
 var wander_target: Vector3
 var home_position: Vector3
@@ -70,7 +71,7 @@ func _physics_process(_delta: float) -> void:
 
 	# Face movement direction
 	if velocity.length() > 0.1:
-		rotation.y = atan2(velocity.x, velocity.z)
+		rotation.y = atan2(velocity.x, velocity.z) + model_rotation_offset
 
 
 func pick_new_wander_target() -> void:
