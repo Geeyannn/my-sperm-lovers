@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gywytofoww74" path="res://scripts/abstract_door.gd" id="1_6fci7"]
 [ext_resource type="Material" uid="uid://cupdd4e00eo2p" path="res://art/glbtf/entitiesMaterials/door/Material.001.tres" id="1_jngus"]
-[ext_resource type="PackedScene" uid="uid://c6sr2w4xbnhs6" path="res://scenes/dialogSystem/dialog_system.tscn" id="1_rrbjp"]
+[ext_resource type="PackedScene" uid="uid://c6sr2w4xbnhs6" path="res://scenes/dialog_system.tscn" id="1_rrbjp"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_40v2i"]
 _surfaces = [{
@@ -42,7 +42,7 @@ size = Vector3(2.0470428, 2.9716492, 1.0995026)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rrbjp"]
 size = Vector3(2.872795, 2.7564697, 2.6099854)
 
-[node name="AbstractDoor" type="StaticBody3D"]
+[node name="AbstractDoor" type="StaticBody3D" groups=["interactable"]]
 editor_description = "Description:
 A static door that blocks the player and triggers a dialogue when interacted with inside its interaction area.
 
@@ -52,12 +52,12 @@ script = ExtResource("1_6fci7")
 
 [node name="DialogSystem" parent="." instance=ExtResource("1_rrbjp")]
 
-[node name="Cube_001" type="MeshInstance3D" parent="."]
+[node name="DoorMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.4749194, 0, 0, 0, 0.41164017, 0, 0, 0)
 mesh = SubResource("ArrayMesh_d1wtg")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="DoorCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07583094, 0.077020586, 0.047564983)
 visible = false
 shape = SubResource("BoxShape3D_jngus")

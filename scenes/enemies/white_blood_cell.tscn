@@ -8,7 +8,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_attack"]
 radius = 2.5
 
-[node name="WhiteBloodCell" type="CharacterBody3D"]
+[node name="WhiteBloodCell" type="CharacterBody3D" groups=["enemies"]]
 collision_layer = 2
 script = ExtResource("1_script")
 

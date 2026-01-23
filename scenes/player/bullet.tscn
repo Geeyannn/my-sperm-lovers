@@ -1,23 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1ofmfucyb25p"]
+[gd_scene load_steps=5 format=3 uid="uid://d1ofmfucyb25p"]
 
 [ext_resource type="Script" uid="uid://l2cwtedexpk8" path="res://scripts/bullet.gd" id="1_2as5g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2as5g"]
+albedo_color = Color(1, 1, 0.011764706, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 20.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_j5eos"]
+material = SubResource("StandardMaterial3D_2as5g")
+radial_segments = 5
+rings = 5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2as5g"]
 radius = 0.2
 height = 1.823
-
-[sub_resource type="SphereMesh" id="SphereMesh_2as5g"]
-radius = 0.1
-height = 0.2
 
 [node name="Bullet" type="Area3D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_2as5g")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, -1.0927847e-08, -0.25, 0, 0.25, -1.0927847e-08, 0, 0, 0)
+mesh = SubResource("SphereMesh_j5eos")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0067749023, 0)
 shape = SubResource("CapsuleShape3D_2as5g")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_2as5g")
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.27450982, 0, 1)
+light_energy = 5.0
+distance_fade_enabled = true
+distance_fade_begin = 20.0
+omni_range = 9.595942

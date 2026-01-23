@@ -11,7 +11,6 @@
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_8afob")
 bullet_scene = ExtResource("5_bullet")
-pellet_count = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_dovo2")

@@ -1,12 +1,13 @@
-[gd_scene load_steps=35 format=4 uid="uid://dc3nrto6h6374"]
+[gd_scene load_steps=36 format=4 uid="uid://dc3nrto6h6374"]
 
 [ext_resource type="Script" uid="uid://c2vv85mquw12b" path="res://scripts/secret_ending.gd" id="1_2mu0v"]
 [ext_resource type="PackedScene" uid="uid://qxin0n6vbcb7" path="res://scenes/player/player.tscn" id="1_jbqir"]
 [ext_resource type="Script" uid="uid://c2xaendkngky8" path="res://scripts/camera_follow.gd" id="2_yautc"]
 [ext_resource type="PackedScene" uid="uid://hy4mbrybw7mr" path="res://scenes/enemies/sibling_sperm.tscn" id="3_fr1um"]
-[ext_resource type="Script" path="res://scripts/next_zone_enabler.gd" id="3_os2yb"]
-[ext_resource type="PackedScene" uid="uid://ciluydixohjfm" path="res://scenes/Door/abstract_door.tscn" id="4_upsmr"]
+[ext_resource type="Script" uid="uid://cofp6hemc4wv8" path="res://scripts/next_zone_enabler.gd" id="3_os2yb"]
+[ext_resource type="PackedScene" uid="uid://ciluydixohjfm" path="res://scenes/abstract_door.tscn" id="4_upsmr"]
 [ext_resource type="PackedScene" uid="uid://bj7gawixh3dxo" path="res://scenes/enemies/white_blood_cell.tscn" id="4_v45ci"]
+[ext_resource type="PackedScene" uid="uid://c1ik22b8i70y5" path="res://scenes/levels/level1.tscn" id="6_qgrpf"]
 [ext_resource type="Texture2D" uid="uid://c0xigj7fpr2oc" path="res://art/textures/tileset.png" id="7_hfwtw"]
 [ext_resource type="Script" uid="uid://c2lxt2vjdjb4b" path="res://addons/TileMapLayer3D/nodes/static_collision_body.gd" id="8_hfwtw"]
 [ext_resource type="Shape3D" uid="uid://mv5wqumg3vdt" path="res://scenes/levels/test_level_CollisionData/test_level_TileMapLayer3D_collision.res" id="9_2mu0v"]
@@ -18,7 +19,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b11gld1jjcw3y" path="res://art/glbtf/designsGlb/3dmeshes/FAB_Lamp.res" id="15_3ay3b"]
 [ext_resource type="ArrayMesh" uid="uid://b5ttlbna42lla" path="res://art/glbtf/designsGlb/3dmeshes/FAB_Welcome.res" id="16_hppjq"]
 [ext_resource type="ArrayMesh" uid="uid://c642jqt64ckbf" path="res://art/glbtf/designsGlb/3dmeshes/FAB_table.res" id="16_os2yb"]
-[ext_resource type="PackedScene" uid="uid://c6sr2w4xbnhs6" path="res://scenes/dialogSystem/dialog_system.tscn" id="18_v6k17"]
+[ext_resource type="PackedScene" uid="uid://c6sr2w4xbnhs6" path="res://scenes/dialog_system.tscn" id="18_v6k17"]
 
 [sub_resource type="Environment" id="Environment_hfwtw"]
 background_mode = 1
@@ -135,7 +136,7 @@ _surfaces = [{
 environment = SubResource("Environment_hfwtw")
 
 [node name="Camera3D" type="Camera3D" parent="WorldEnvironment" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.7071068, -0.4055798, 0.579228, 0, 0.81915206, 0.57357645, -0.7071068, -0.4055798, 0.579228, 5, 5, 5)
+transform = Transform3D(0.70710677, -0.4055798, 0.579228, 0, 0.81915206, 0.57357645, -0.70710677, -0.4055798, 0.579228, 5, 5, 5)
 projection = 1
 size = 10.0
 script = ExtResource("2_yautc")
@@ -143,13 +144,14 @@ target = NodePath("../../Player")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, -2.9802322e-07, 0, 3.2782555e-07, 1, 0.05516666, 0.65837556, -6.167001)
-light_color = Color(0.99999994, 0.9782172, 0.9291647, 1)
+light_color = Color(0.9647059, 0.9411765, 0.30588236, 1)
 light_energy = 3.0
 omni_range = 7.206023
 
 [node name="AbstractDoor" parent="." instance=ExtResource("4_upsmr")]
 transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0.5911617, 1.474934, -16.7337)
 auto_chain_dialog_id = "DoorethyL0_0"
+enemy_group = "enemies"
 
 [node name="SecretZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7255995, 1.4062264, 6.462715)
@@ -176,6 +178,7 @@ shape = SubResource("BoxShape3D_hfwtw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28081203, 1.4062264, -19.370373)
 disable_mode = 2
 script = ExtResource("3_os2yb")
+next_scene = ExtResource("6_qgrpf")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="NextZone"]
 transform = Transform3D(1, 0, 0, 0, -0.7986355, 0.6018151, 0, -0.6018151, -0.7986355, 0.33370256, 1.7161062, -0.41686058)
@@ -326,11 +329,9 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1
 
 [node name="SiblingSperm" parent="." instance=ExtResource("3_fr1um")]
 transform = Transform3D(0.040654972, 0, 0.9991732, 0, 1, 0, -0.9991732, 0, 0.040654972, 0.07938719, 1.1259284, -7.1576486)
-model_rotation_offset = -1.571
 
 [node name="SiblingSperm2" parent="." instance=ExtResource("3_fr1um")]
 transform = Transform3D(0.086042985, 0, 0.99629146, 0, 1, 0, -0.99629146, 0, 0.086042985, 1.9690824, 0.8715956, -4.2736645)
-model_rotation_offset = -1.571
 
 [node name="WhiteBloodCell" parent="." instance=ExtResource("4_v45ci")]
 transform = Transform3D(-0.005270858, 0, 0.9999861, 0, 1, 0, -0.9999861, 0, -0.005270858, 1.0713403, 1.6586838, -9.263895)

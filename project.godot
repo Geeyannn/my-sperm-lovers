@@ -21,6 +21,7 @@ window/size/viewport_width=640
 window/size/viewport_height=380
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
+mouse_cursor/custom_image="uid://bod4db0wdivro"
 
 [editor_plugins]
 
@@ -30,6 +31,8 @@ enabled=PackedStringArray("res://addons/TileMapLayer3D/plugin.cfg")
 
 walls="walls mesh"
 player=""
+enemies=""
+interactable=""
 
 [input]
 

@@ -8,6 +8,7 @@
 	"name": "[REDACTED]",
 	"text": "There's a very luminous light."
   },
+
   "Doorethy0": {
 	"name": "Doorethy",
 	"text": "Wait... where are you going?",
@@ -22,7 +23,6 @@
 	"name": "Doorethy",
 	"text": "You're not supposed to - HEY!!!"
   },
-
   "DoorethyL0_0": {
 	"name": "Doorethy",
 	"text": "Oh!!! A new one! Hi hi~~~! ^^",
@@ -41,5 +41,9 @@
   "DoorethyL0_3": {
 	"name": "Doorethy",
 	"text": "ORRR~~ solve my little puzzle and I'll... handle it myself!!! nya~"
+  },
+
+  "L0_inter": {
+	"text": "The place makes no sense..."
   }
 }

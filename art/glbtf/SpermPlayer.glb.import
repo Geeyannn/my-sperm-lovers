@@ -41,12 +41,12 @@ _subresources={
 "materials": {
 "Material.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://art/glbtf/materials/spermPlayer/Material.001.tres",
+"use_external/fallback_path": "res://art/glbtf/entitiesMaterials/spermPlayer/Material.001.tres",
 "use_external/path": "uid://hhi2km0smwir"
 },
 "Material.002": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://art/glbtf/materials/spermPlayer/Material.002.tres",
+"use_external/fallback_path": "res://art/glbtf/entitiesMaterials/spermPlayer/Material.002.tres",
 "use_external/path": "uid://b7m7t0ncabnmd"
 }
 }
