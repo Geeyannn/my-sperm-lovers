@@ -127,7 +127,7 @@ func detect_targets() -> void:
 	current_target = null
 
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int) -> bool:
 	health -= amount
 	print("Sibling took ", amount, " damage! Health: ", health)
 
@@ -137,6 +137,8 @@ func take_damage(amount: int) -> void:
 
 	if health <= 0:
 		die()
+		return true
+	return false
 
 
 func die() -> void:

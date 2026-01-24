@@ -8,7 +8,7 @@ extends CharacterBody3D
 @export var bullet_scene: PackedScene
 @export var pellet_count: int = 3
 @export var spread_angle: float = 30.0  # degrees
-@export var shot_cooldown: float = 1.0
+@export var shot_cooldown: float = 2.0
 
 # Health
 @export var max_health: int = 10
@@ -17,6 +17,8 @@ extends CharacterBody3D
 
 @onready var shooting_point: Node3D = $ShootingPoint
 @onready var gun: Node3D = $Gun
+@onready var shoot_sound: AudioStreamPlayer3D = $ShootSound
+@onready var reload_sound: AudioStreamPlayer3D = $ReloadSound
 
 # Isometric direction conversion
 var iso_forward := Vector3(-1, 0, -1).normalized()
@@ -105,8 +107,12 @@ func shoot() -> void:
 	if bullet_scene == null:
 		print("No bullet scene assigned!")
 		return
-	
+
 	can_shoot = false
+
+	# Play shoot sound
+	if shoot_sound and shoot_sound.stream:
+		shoot_sound.play()
 	
 	# Shotgun spread - spawn multiple pellets
 	for i in pellet_count:
@@ -123,7 +129,11 @@ func shoot() -> void:
 	# Trigger gun recoil
 	if gun and gun.has_method("recoil"):
 		gun.recoil()
-	
+
+	# Play reload sound (pump-action style, right after shooting)
+	if reload_sound and reload_sound.stream:
+		reload_sound.play()
+
 	# Cooldown timer
 	get_tree().create_timer(shot_cooldown).timeout.connect(_reset_shoot)
 

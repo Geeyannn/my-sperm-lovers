@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1ofmfucyb25p"]
+[gd_scene load_steps=7 format=3 uid="uid://d1ofmfucyb25p"]
 
 [ext_resource type="Script" uid="uid://l2cwtedexpk8" path="res://scripts/bullet.gd" id="1_2as5g"]
+[ext_resource type="AudioStream" uid="uid://cnhkr2sslfr73" path="res://sounds/thud-impact-sound-sfx-379990.mp3" id="2_0td6m"]
+[ext_resource type="AudioStream" uid="uid://bgiimk5cfr665" path="res://sounds/wet-squelchy-impact-352302.mp3" id="3_oklhc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2as5g"]
 albedo_color = Color(1, 1, 0.011764706, 1)
@@ -36,3 +38,9 @@ light_energy = 5.0
 distance_fade_enabled = true
 distance_fade_begin = 20.0
 omni_range = 9.595942
+
+[node name="ImpactSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_0td6m")
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_oklhc")
