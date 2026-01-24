@@ -10,6 +10,7 @@ extends CharacterBody3D
 @export var stop_distance: float = 1.2
 @export var separation_radius: float = 2.0
 @export var separation_force: float = 1.5
+@export var model_rotation_offset: float = -PI/2  # Offset to align model forward with movement
 
 var wander_target: Vector3
 var home_position: Vector3
@@ -68,9 +69,14 @@ func _physics_process(_delta: float) -> void:
 
 	move_and_slide()
 
-	# Face movement direction
-	if velocity.length() > 0.1:
-		rotation.y = atan2(velocity.x, velocity.z)
+	# Face player directly when aggro, otherwise face movement direction
+	if is_aggro and is_instance_valid(current_target):
+		var look_dir = current_target.global_position - global_position
+		look_dir.y = 0
+		if look_dir.length() > 0.1:
+			rotation.y = atan2(look_dir.x, look_dir.z) + model_rotation_offset
+	elif velocity.length() > 0.1:
+		rotation.y = atan2(velocity.x, velocity.z) + model_rotation_offset
 
 	# Check for continuous attack while overlapping
 	check_continuous_attack()
