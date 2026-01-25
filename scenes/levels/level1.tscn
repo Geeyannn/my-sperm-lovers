@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://c1ik22b8i70y5"]
+[gd_scene load_steps=63 format=4 uid="uid://c1ik22b8i70y5"]
 
 [ext_resource type="Script" uid="uid://4kv8f8ejgwqn" path="res://addons/TileMapLayer3D/nodes/tilemap_layer_3d.gd" id="1_dd0lh"]
 [ext_resource type="Script" uid="uid://c2xaendkngky8" path="res://scripts/camera_follow.gd" id="1_dywbp"]
@@ -30,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://brnefqptohqv8" path="res://art/glbtf/designsGlb/texture/blind_van_psx_style_0.png" id="28_bw3ef"]
 [ext_resource type="PackedScene" uid="uid://db5tybnqngmrq" path="res://art/glbtf/designsGlb/Van.glb" id="28_noix2"]
 [ext_resource type="Texture2D" uid="uid://d2hv3wbg2njv6" path="res://art/glbtf/designsGlb/texture/blind_van_psx_style_1.png" id="29_07dy8"]
+[ext_resource type="PackedScene" uid="uid://hy4mbrybw7mr" path="res://scenes/enemies/sibling_sperm.tscn" id="31_3gp1u"]
+[ext_resource type="PackedScene" uid="uid://bj7gawixh3dxo" path="res://scenes/enemies/white_blood_cell.tscn" id="32_igeo0"]
 
 [sub_resource type="Environment" id="Environment_1seuy"]
 background_mode = 1
@@ -2409,6 +2411,48 @@ light_color = Color(0.9141698, 0.91301084, 7.70092e-07, 1)
 light_energy = 5.0
 light_indirect_energy = 1.906
 light_volumetric_fog_energy = 3.935
+
+[node name="SiblingSperm" parent="." instance=ExtResource("31_3gp1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.077333, 0.48746392, 68.362946)
+
+[node name="SiblingSperm2" parent="." instance=ExtResource("31_3gp1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.524593, 0.48746344, 67.01952)
+
+[node name="SiblingSperm3" parent="." instance=ExtResource("31_3gp1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.983326, 0.48746344, 69.74884)
+
+[node name="WhiteBloodCell" parent="." instance=ExtResource("32_igeo0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.733955, 0.9999995, 62.398327)
+
+[node name="SiblingSperm4" parent="." instance=ExtResource("31_3gp1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.200966, 0.48746392, 62.503666)
+
+[node name="SiblingSperm5" parent="." instance=ExtResource("31_3gp1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3492146, 0.48746344, 66.51813)
+
+[node name="WhiteBloodCell2" parent="." instance=ExtResource("32_igeo0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0629997, 0.99999905, 70.602135)
+
+[node name="WhiteBloodCell3" parent="." instance=ExtResource("32_igeo0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.310232, 1, 68.69628)
+
+[node name="SiblingSperm6" parent="." instance=ExtResource("31_3gp1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7305064, 0.48746392, 69.46336)
+
+[node name="SiblingSperm7" parent="." instance=ExtResource("31_3gp1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.270033, 0.48746487, 63.84868)
+
+[node name="WhiteBloodCell4" parent="." instance=ExtResource("32_igeo0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9241056, 1, 64.493195)
+
+[node name="SiblingSperm8" parent="." instance=ExtResource("31_3gp1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.329191, 0.48746392, 70.23674)
+
+[node name="SiblingSperm9" parent="." instance=ExtResource("31_3gp1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.436002, 0.48746392, 69.111465)
+
+[node name="SiblingSperm10" parent="." instance=ExtResource("31_3gp1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.374045, 0.48746392, 61.084858)
 
 [editable path="Designs/Cars/Car"]
 [editable path="Designs/Cars/Car2"]
