@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://35mgp36hrq3r"]
+
+[resource]
+resource_name = "cekicmaterial"
+cull_mode = 2
+albedo_color = Color(1, 0.6491519, 0.26276565, 1)
+roughness = 0.5

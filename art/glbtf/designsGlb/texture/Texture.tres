@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bl72iht4fphcp"]
+
+[ext_resource type="Texture2D" uid="uid://dkbh8hawcsgdo" path="res://art/glbtf/designsGlb/texture/psx_air_conditioners_pack_0.jpg" id="1_ne022"]
+
+[resource]
+resource_name = "Texture"
+cull_mode = 2
+albedo_texture = ExtResource("1_ne022")
+roughness = 0.82111454

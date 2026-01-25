@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://eqxairoswcma"]
+
+[ext_resource type="Texture2D" uid="uid://daiclh6hxq05u" path="res://art/glbtf/designsGlb/texture/low_poly_psx_style_soviet_subway_metro_props_20.png" id="1_lr02u"]
+
+[resource]
+resource_name = "metrowall"
+cull_mode = 2
+albedo_texture = ExtResource("1_lr02u")
+roughness = 0.5
+uv1_scale = Vector3(1, -1, 1)

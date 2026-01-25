@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cojotwpk1hw21"]
+
+[ext_resource type="Texture2D" uid="uid://bxl7anj0d22bc" path="res://art/glbtf/designsGlb/texture/psx_style_barricade_pack_0.png" id="1_innih"]
+
+[resource]
+resource_name = "Material.005"
+cull_mode = 2
+albedo_texture = ExtResource("1_innih")
+roughness = 0.82111454

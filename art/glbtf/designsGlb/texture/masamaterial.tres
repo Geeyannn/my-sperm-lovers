@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bmsa8dyihiuau"]
+
+[resource]
+resource_name = "masamaterial"
+cull_mode = 2
+albedo_color = Color(0.39366406, 0.39366406, 0.39366406, 1)
+roughness = 0.5

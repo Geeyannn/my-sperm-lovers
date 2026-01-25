@@ -35,15 +35,12 @@
   },
   "DoorethyL0_2": {
 	"name": "Doorethy",
-	"text": "How about a deal? Kill everyone here and I'll let you through~~ :3",
+	"text": "How about a deal? Solve all my puzzles and I'll handle your siblings!!! :3",
 	"next": "DoorethyL0_3"
   },
   "DoorethyL0_3": {
 	"name": "Doorethy",
-	"text": "ORRR~~ solve my little puzzle and I'll... handle it myself!!! nya~"
+	"text": "ORRR~~ kill everyoneeee with cold blooddd!!!!! ^^"
   },
 
-  "L0_inter": {
-	"text": "The place makes no sense..."
-  }
 }

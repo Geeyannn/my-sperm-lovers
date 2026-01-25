@@ -31,7 +31,10 @@ fog_light_color = Color(0.40176448, 0, 0, 1)
 fog_light_energy = 5.0
 fog_density = 1.0
 fog_sky_affect = 0.0
+volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_emission = Color(0.4, 0, 0, 1)
+volumetric_fog_sky_affect = 0.0
 adjustment_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hfwtw"]

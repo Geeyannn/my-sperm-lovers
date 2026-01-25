@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://clkvkuswbeg7s"]
+
+[resource]
+resource_name = "sukapak"
+cull_mode = 2
+albedo_color = Color(0.09553586, 0, 0.6334823, 1)
+roughness = 0.5

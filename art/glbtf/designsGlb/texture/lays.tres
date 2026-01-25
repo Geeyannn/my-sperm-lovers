@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cieb0mgkt6lcb"]
+
+[ext_resource type="Texture2D" uid="uid://c1vk0rjeo7hay" path="res://art/glbtf/designsGlb/texture/low_poly_psx_style_soviet_subway_metro_props_15.jpg" id="1_4u2f3"]
+
+[resource]
+resource_name = "lays"
+cull_mode = 2
+albedo_texture = ExtResource("1_4u2f3")
+roughness = 0.5
+uv1_scale = Vector3(1, -1, 1)

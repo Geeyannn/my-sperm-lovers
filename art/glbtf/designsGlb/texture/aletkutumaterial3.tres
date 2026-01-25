@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://csxdvevmjjoxw"]
+
+[resource]
+resource_name = "aletkutumaterial3"
+cull_mode = 2
+albedo_color = Color(0.36198607, 0.36198607, 0.36198607, 1)
+roughness = 0.5

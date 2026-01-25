@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://vpjuc200r2dh"]
+
+[ext_resource type="Texture2D" uid="uid://c57levc4lfo0x" path="res://art/glbtf/designsGlb/texture/low_poly_psx_style_soviet_subway_metro_props_19.jpg" id="1_yfwfc"]
+
+[resource]
+resource_name = "fanta"
+cull_mode = 2
+albedo_texture = ExtResource("1_yfwfc")
+roughness = 0.5
+uv1_scale = Vector3(1, -1, 1)

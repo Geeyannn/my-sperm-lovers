@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://5ivk3hxrkpse"]
+
+[ext_resource type="Texture2D" uid="uid://cmhgurx1pfod3" path="res://art/glbtf/designsGlb/texture/low_poly_psx_style_soviet_subway_metro_props_22.jpg" id="1_kywxi"]
+
+[resource]
+resource_name = "wallpostermaterial6"
+cull_mode = 2
+albedo_texture = ExtResource("1_kywxi")
+roughness = 0.5
+uv1_scale = Vector3(1, -1, 1)

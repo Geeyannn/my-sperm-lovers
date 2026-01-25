@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bguegy77fof7k"]
+
+[ext_resource type="Texture2D" uid="uid://b8u21o515n5vh" path="res://art/glbtf/designsGlb/texture/low_poly_psx_style_soviet_subway_metro_props_8.png" id="1_yjpry"]
+
+[resource]
+resource_name = "metroic"
+cull_mode = 2
+albedo_texture = ExtResource("1_yjpry")
+roughness = 0.5
+uv1_scale = Vector3(1, -1, 1)

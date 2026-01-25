@@ -7,4 +7,5 @@ resource_name = "material"
 cull_mode = 2
 albedo_texture = ExtResource("1_p6ijw")
 roughness = 0.5
+emission_on_uv2 = true
 uv1_scale = Vector3(1, -1, 1)

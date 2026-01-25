@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://beo2dbsk88dfs"]
+
+[ext_resource type="Texture2D" uid="uid://coddt1qcae5ut" path="res://art/glbtf/designsGlb/texture/low_poly_psx_style_soviet_subway_metro_props_4.jpg" id="1_1htp1"]
+
+[resource]
+resource_name = "T_FloorTile03"
+cull_mode = 2
+albedo_texture = ExtResource("1_1htp1")
+roughness = 0.82111454
+uv1_scale = Vector3(1, -1, 1)

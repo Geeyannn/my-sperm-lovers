@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://kydy4r578wmi"]
+
+[resource]
+resource_name = "vendingmaterial"
+cull_mode = 2
+albedo_color = Color(0.36650944, 0.36650944, 0.36650944, 1)
+roughness = 0.5

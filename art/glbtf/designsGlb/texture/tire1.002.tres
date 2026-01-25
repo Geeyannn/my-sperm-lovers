@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cp4x4j36rmy4x"]
+
+[ext_resource type="Texture2D" uid="uid://cdjs4eurpgae6" path="res://art/glbtf/designsGlb/texture/psx_low-poly_car_-_renault_3.png" id="1_j5l7y"]
+
+[resource]
+resource_name = "tire1.002"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_j5l7y")
+emission_texture = ExtResource("1_j5l7y")
+texture_filter = 0

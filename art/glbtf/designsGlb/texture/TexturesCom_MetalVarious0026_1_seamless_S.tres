@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bgpnltnyhhure"]
+
+[ext_resource type="Texture2D" uid="uid://csw8mx4o20sed" path="res://art/glbtf/designsGlb/texture/psx_style_chain_fence_1.png" id="1_m4agl"]
+
+[resource]
+resource_name = "TexturesCom_MetalVarious0026_1_seamless_S"
+transparency = 4
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_m4agl")
+texture_filter = 0

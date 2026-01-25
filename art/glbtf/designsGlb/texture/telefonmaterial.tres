@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b6ndtvrpgwsp6"]
+
+[resource]
+resource_name = "telefonmaterial"
+cull_mode = 2
+albedo_color = Color(0.33935815, 0.33935815, 0.33935815, 1)
+roughness = 0.5

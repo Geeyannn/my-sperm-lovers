@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cg72nf0lk8r2"]
+
+[ext_resource type="Texture2D" uid="uid://bs6qw82tocohd" path="res://art/glbtf/designsGlb/texture/psx_low-poly_car_-_renault_2.png" id="1_usau7"]
+
+[resource]
+resource_name = "LicensePlate"
+cull_mode = 2
+albedo_texture = ExtResource("1_usau7")
+roughness = 0.82111454
+texture_filter = 0
