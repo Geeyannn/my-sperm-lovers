@@ -1,6 +1,6 @@
-extends Node
+extends Node3D
 
-@onready var dialog_system = $DialogSystem
+@onready var dialog_system = $DialogSystem/ControlNode
 
 func _ready() -> void:
 	# Wait a brief moment for the scene to fully initialize
@@ -10,4 +10,4 @@ func _ready() -> void:
 	if dialog_system:
 		dialog_system.start_dialogue("DevWelcomeL1")
 	else:
-		push_error("DialogSystem not found in level1!")
+		push_error("DialogSystem/ControlNode not found in level1!")
