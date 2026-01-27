@@ -28,6 +28,8 @@ func take_damage(amount: int) -> bool:
 	
 	if health <= 0:
 		emit_signal("destroyed")
+		if GameManager:
+			GameManager.add_karma_xp(30.0)  # Good action: +30 XP
 		queue_free()
 		return true  # Fatal
 	return false

@@ -204,6 +204,8 @@ func take_damage(amount: int) -> bool:
 
 func die() -> void:
 	print("White blood cell died!")
+	if GameManager:
+		GameManager.add_karma_xp(-10.0)  # Bad action: -10 XP
 	# Wake nearby enemies (group reaction)
 	var all_enemies = get_tree().get_nodes_in_group("enemies")
 	for enemy in all_enemies:
