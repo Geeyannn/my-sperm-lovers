@@ -1,24 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://karmabar3dscene"]
+[gd_scene load_steps=4 format=3 uid="uid://karmabar3dscene"]
 
 [ext_resource type="Script" path="res://scripts/karma_bar_3d.gd" id="1_script"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_sprite"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="LabelSettings" id="LabelSettings_level"]
+font_size = 10
+font_color = Color(1, 1, 1, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [node name="KarmaBar3D" type="Node3D"]
 script = ExtResource("1_script")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
-size = Vector2i(48, 10)
+size = Vector2i(120, 16)
 
-[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-show_percentage = false
+theme_override_constants/separation = 4
+
+[node name="LevelLabel" type="Label" parent="SubViewport/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_level")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SegmentsContainer" type="HBoxContainer" parent="SubViewport/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.012

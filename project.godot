@@ -15,6 +15,10 @@ run/main_scene="uid://fya3xhi774v"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://autoload/game_manager.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -71,10 +75,6 @@ shoot={
 [internationalization]
 
 rendering/force_right_to_left_layout_direction=true
-
-[autoload]
-
-GameManager="*res://autoload/game_manager.gd"
 
 [rendering]
 

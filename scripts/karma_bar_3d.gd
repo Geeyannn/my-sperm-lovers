@@ -2,61 +2,76 @@ extends Node3D
 
 @export var positive_color: Color = Color(0.5, 0.5, 0.5, 1)  # Grey for positive karma
 @export var negative_color: Color = Color(0.5, 0.13, 0.13, 1)  # Maroon for negative karma
-@export var background_color: Color = Color(0.25, 0.25, 0.25, 1)  # Dark grey
+@export var empty_color: Color = Color(0.15, 0.15, 0.15, 1)  # Dark for empty segments
 @export var border_color: Color = Color.BLACK
-@export var border_width: int = 2
+@export var segment_count: int = 5  # Number of segments in the bar
 
-@onready var progress_bar: ProgressBar = $SubViewport/ProgressBar
 @onready var sprite: Sprite3D = $Sprite3D
+@onready var subviewport: SubViewport = $SubViewport
+@onready var level_label: Label = $SubViewport/HBoxContainer/LevelLabel
+@onready var segments_container: HBoxContainer = $SubViewport/HBoxContainer/SegmentsContainer
 
 var current_level: int = 0
 var is_positive: bool = true
+var segment_panels: Array[Panel] = []
 
 
 func _ready() -> void:
-	setup_colors()
-	# Connect to GameManager signal
+	_create_segments()
 	if GameManager:
 		GameManager.karma_updated.connect(_on_karma_updated)
+	_update_display(0, 0.0, true)
 
 
-func setup_colors() -> void:
-	# Fill style - solid color, no border
-	var fill_style = StyleBoxFlat.new()
-	fill_style.bg_color = positive_color
-	fill_style.corner_radius_top_left = 0
-	fill_style.corner_radius_top_right = 0
-	fill_style.corner_radius_bottom_left = 0
-	fill_style.corner_radius_bottom_right = 0
-	progress_bar.add_theme_stylebox_override("fill", fill_style)
+func _create_segments() -> void:
+	# Clear existing segments
+	for child in segments_container.get_children():
+		child.queue_free()
+	segment_panels.clear()
 
-	# Background style - with border
-	var bg_style = StyleBoxFlat.new()
-	bg_style.bg_color = background_color
-	bg_style.border_color = border_color
-	bg_style.border_width_left = border_width
-	bg_style.border_width_right = border_width
-	bg_style.border_width_top = border_width
-	bg_style.border_width_bottom = border_width
-	bg_style.corner_radius_top_left = 0
-	bg_style.corner_radius_top_right = 0
-	bg_style.corner_radius_bottom_left = 0
-	bg_style.corner_radius_bottom_right = 0
-	progress_bar.add_theme_stylebox_override("background", bg_style)
+	# Create segment panels
+	for i in range(segment_count):
+		var panel = Panel.new()
+		panel.custom_minimum_size = Vector2(16, 12)
+
+		var style = StyleBoxFlat.new()
+		style.bg_color = empty_color
+		style.border_color = border_color
+		style.border_width_left = 2
+		style.border_width_right = 2
+		style.border_width_top = 2
+		style.border_width_bottom = 2
+		style.corner_radius_top_left = 0
+		style.corner_radius_top_right = 0
+		style.corner_radius_bottom_left = 0
+		style.corner_radius_bottom_right = 0
+
+		panel.add_theme_stylebox_override("panel", style)
+		segments_container.add_child(panel)
+		segment_panels.append(panel)
 
 
 func _on_karma_updated(level: int, progress: float, karma_is_positive: bool) -> void:
 	current_level = level
 	is_positive = karma_is_positive
+	_update_display(level, progress, karma_is_positive)
 
-	# Update progress bar value (0-100%)
-	progress_bar.max_value = 1.0
-	progress_bar.value = progress
 
-	# Update fill color based on karma polarity
-	var fill_style = progress_bar.get_theme_stylebox("fill") as StyleBoxFlat
-	if fill_style:
-		if is_positive:
-			fill_style.bg_color = positive_color
-		else:
-			fill_style.bg_color = negative_color
+func _update_display(level: int, progress: float, karma_is_positive: bool) -> void:
+	# Update level label
+	if level_label:
+		level_label.text = str(level)
+
+	# Calculate how many segments to fill
+	var filled_segments = int(progress * segment_count)
+	var fill_color = positive_color if karma_is_positive else negative_color
+
+	# Update segment colors
+	for i in range(segment_panels.size()):
+		var panel = segment_panels[i]
+		var style = panel.get_theme_stylebox("panel") as StyleBoxFlat
+		if style:
+			if i < filled_segments:
+				style.bg_color = fill_color
+			else:
+				style.bg_color = empty_color
