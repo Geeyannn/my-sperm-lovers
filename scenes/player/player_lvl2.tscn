@@ -1,0 +1,62 @@
+[gd_scene load_steps=13 format=3 uid="uid://bvge0ciotu6n2"]
+
+[ext_resource type="Script" uid="uid://dlbvddyy2ax2w" path="res://scripts/player.gd" id="1_x2fg5"]
+[ext_resource type="PackedScene" uid="uid://d1ofmfucyb25p" path="res://scenes/player/bullet.tscn" id="2_f1jol"]
+[ext_resource type="PackedScene" uid="uid://dpumo2pm1yuxh" path="res://art/glbtf/SpermPlayer.glb" id="3_vwssu"]
+[ext_resource type="PackedScene" uid="uid://oc1dg0chp34e" path="res://art/glbtf/Gun.glb" id="4_mhbgw"]
+[ext_resource type="Script" uid="uid://j6katki2lo5b" path="res://scripts/gun.gd" id="5_k6060"]
+[ext_resource type="AudioStream" uid="uid://2qy7liacu0k3" path="res://sounds/00_shotgun-146188-PSX.wav" id="6_u85bv"]
+[ext_resource type="AudioStream" uid="uid://ldxenlh5k7yv" path="res://sounds/shotgun-reload.wav" id="7_ij36i"]
+[ext_resource type="AudioStream" uid="uid://csjxklg0t6yhg" path="res://sounds/pistol-cock-6014.wav" id="8_nsrqw"]
+[ext_resource type="PackedScene" uid="uid://chpbar3dscene" path="res://scenes/ui/hp_bar_3d.tscn" id="9_rhsyd"]
+[ext_resource type="PackedScene" uid="uid://b4grjp5wbo223" path="res://scenes/ui/karma_bar_3d.tscn" id="10_urb0r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qek5x"]
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_activation"]
+radius = 35.0
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_x2fg5")
+bullet_scene = ExtResource("2_f1jol")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_qek5x")
+
+[node name="SpermPlayer" parent="." instance=ExtResource("3_vwssu")]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 0, 0, 0.14251202)
+rotation_order = 0
+
+[node name="Gun" parent="." instance=ExtResource("4_mhbgw")]
+transform = Transform3D(2.9671566, -0.05188128, -0.47249177, 0, 4.5686803, -0.15564907, 0.56065005, 0.2745739, 2.500592, 0.30225283, 0.67845654, 0.40896508)
+script = ExtResource("5_k6060")
+
+[node name="ShootingPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 2)
+visible = false
+
+[node name="ShootSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_u85bv")
+
+[node name="ReloadSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_ij36i")
+
+[node name="AimSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_nsrqw")
+
+[node name="HPBar" parent="." instance=ExtResource("9_rhsyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+fill_color = Color(0.5, 0.75, 0.25, 1)
+background_color = Color(0.5, 0.13, 0.13, 1)
+
+[node name="KarmaBar" parent="." instance=ExtResource("10_urb0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27, 0)
+
+[node name="ActivationRadius" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationRadius"]
+shape = SubResource("SphereShape3D_activation")

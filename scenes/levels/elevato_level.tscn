@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://dinjw7fdmiu4h"]
 
-[ext_resource type="Script" path="res://scripts/elevato_map_manager.gd" id="1_eqj1i"]
-[ext_resource type="Script" path="res://scripts/elevator.gd" id="1_s37nd"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/sibling_sperm_lvl2.tscn" id="2_j7pir"]
+[ext_resource type="Script" uid="uid://c3vfnjxg8q0kx" path="res://scripts/elevato_map_manager.gd" id="1_eqj1i"]
+[ext_resource type="Script" uid="uid://ddwnhavqvrmbu" path="res://scripts/elevator.gd" id="1_s37nd"]
+[ext_resource type="PackedScene" uid="uid://p76fxfi32028" path="res://scenes/enemies/sibling_sperm_lvl2.tscn" id="2_j7pir"]
 [ext_resource type="Script" uid="uid://c2xaendkngky8" path="res://scripts/camera_follow.gd" id="3_eqj1i"]
-[ext_resource type="PackedScene" path="res://scenes/player/player_lvl2.tscn" id="5_26lgc"]
-[ext_resource type="PackedScene" path="res://scenes/player/bullet_lvl2.tscn" id="7_q3hvl"]
+[ext_resource type="PackedScene" uid="uid://bvge0ciotu6n2" path="res://scenes/player/player_lvl2.tscn" id="5_26lgc"]
+[ext_resource type="PackedScene" uid="uid://cdu5nitwb3kt5" path="res://scenes/player/bullet_lvl2.tscn" id="7_q3hvl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_30rc7"]
 size = Vector3(5.908722, 2.4692383, 5.1880493)
