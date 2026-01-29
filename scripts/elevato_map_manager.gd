@@ -3,8 +3,10 @@ extends Node3D
 # --- Configuration ---
 @export var sibling_scene: PackedScene
 @export var spawn_on_start: bool = true
-@export var vertical_offset: float = 0.8  # Base vertical offset
 @export var spawn_check_radius: float = 0.5  # Reduced radius for closer spawning
+
+# --- Tracking ---
+var active_siblings: Array[Node] = []
 
 # --- Node References ---
 @onready var markers_parent: Node3D = get_node_or_null("Markers")
@@ -40,13 +42,9 @@ func spawn_all_siblings() -> void:
 	# Loop through markers and instance siblings
 	for marker in markers:
 		if marker is Marker3D:
-			# Simple spawn without complex checking
-			var spawn_pos = Vector3(
-				marker.global_position.x,
-				marker.global_position.y + vertical_offset,
-				marker.global_position.z
-			)
-			
+			# Use marker position directly - markers should be placed at correct height in editor
+			var spawn_pos = marker.global_position
+
 			# Only check if position is too close to existing ones
 			var too_close = false
 			for existing_pos in spawned_positions:
@@ -65,36 +63,43 @@ func spawn_all_siblings() -> void:
 func spawn_sibling_at_position(spawn_pos: Vector3) -> void:
 	if not sibling_scene:
 		return
-	
+
 	var new_sibling = sibling_scene.instantiate()
-	
+
 	# Add to scene
 	get_tree().current_scene.add_child(new_sibling)
 	new_sibling.global_position = spawn_pos
-	
+
+	# Track this sibling
+	active_siblings.append(new_sibling)
+
 	# Ensure the enemy is part of the "enemies" group
 	new_sibling.add_to_group("enemies")
-	
+
 	# Connect signals if needed (check if the sibling has these signals first)
 	if new_sibling.has_signal("died"):
-		# Connect to a handler function that exists
 		new_sibling.died.connect(_handle_sibling_died.bind(new_sibling))
-	
-	# Always connect tree_exited
+
+	# Always connect tree_exited for cleanup
 	new_sibling.tree_exited.connect(_handle_sibling_removed.bind(new_sibling))
 
 func clear_map() -> void:
-	var siblings = get_tree().get_nodes_in_group("enemies")
-	for s in siblings:
-		s.queue_free()
+	for sibling in active_siblings:
+		if is_instance_valid(sibling):
+			sibling.queue_free()
+	active_siblings.clear()
+
+func get_active_count() -> int:
+	# Clean up invalid references and return count
+	active_siblings = active_siblings.filter(func(s): return is_instance_valid(s))
+	return active_siblings.size()
 
 # Signal handler for sibling death
 func _handle_sibling_died(sibling: Node) -> void:
 	print("Sibling died: ", sibling.name if sibling else "Unknown")
-	# You might want to remove it from tracking here
-	# For example: active_siblings.erase(sibling) if you have such an array
+	active_siblings.erase(sibling)
 
 # Signal handler for sibling removal
 func _handle_sibling_removed(sibling: Node) -> void:
 	print("Sibling removed from tree: ", sibling.name if sibling else "Unknown")
-	# Clean up any references
+	active_siblings.erase(sibling)

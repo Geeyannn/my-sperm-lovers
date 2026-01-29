@@ -96,9 +96,9 @@ func _find_toilet_attraction_target() -> void:
 			print("[Sperm] Found Attraction node at: ", toilet_attraction_position)
 			return
 	
-	# Method 3: Hardcoded fallback to known coordinates
-	toilet_attraction_position = Vector3(16.0, 0.8, -7.0)
-	print("[Sperm] Using hardcoded attraction position: ", toilet_attraction_position)
+	# Method 3: Fallback - stay in place and warn
+	push_warning("[Sperm] No attraction_toilet found! Sperm will stay in place.")
+	toilet_attraction_position = global_position
 
 func _find_all_nodes(node: Node) -> Array[Node]:
 	var result: Array[Node] = [node]
@@ -171,7 +171,7 @@ func _physics_process(delta: float) -> void:
 		last_position = global_position
 
 	# Common post-movement logic
-	_apply_separation()
+	velocity += get_separation_from_enemies()
 	move_and_slide()
 	_rotate_toward_movement()
 
@@ -196,17 +196,6 @@ func _handle_toilet_attraction(delta: float) -> void:
 	
 	move_and_slide()
 	_rotate_toward_movement()
-
-func _apply_separation() -> void:
-	var push = Vector3.ZERO
-	for e in get_tree().get_nodes_in_group("enemies"):
-		if e == self: continue
-		var diff = global_position - e.global_position
-		diff.y = 0
-		var d = diff.length()
-		if d < separation_radius and d > 0.01:
-			push += diff.normalized() * separation_force * (1.0 - d / separation_radius)
-	velocity += push
 
 func _rotate_toward_movement() -> void:
 	if velocity.length() < 0.1: return
@@ -242,7 +231,8 @@ func pick_new_wander_target() -> void:
 
 func check_continuous_attack() -> void:
 	if not is_aggro or not can_attack or not attack_hitbox: return
-	
+	if static_mode or is_attracted_to_toilet: return  # Don't attack when static or attracted
+
 	for body in attack_hitbox.get_overlapping_bodies():
 		if body.is_in_group("player") and body.has_method("take_damage"):
 			body.take_damage(attack_damage, global_position)

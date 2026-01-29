@@ -41,7 +41,7 @@ _subresources={
 "materials": {
 "Material.003": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://art/glbtf/entitiesMaterials/boos/Material.003.tres",
+"use_external/fallback_path": "res://art/glbtf/entitiesMaterials/boss/Material.003.tres",
 "use_external/path": "uid://dcluu5wci6815"
 }
 }
