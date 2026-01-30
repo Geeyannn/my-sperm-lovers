@@ -269,7 +269,7 @@
 	{ "name": "Doorethy", "text": "That was insane my boy!!!" },
 	{ "name": "Doorethy", "text": "You know what, the egg is yours, its behind me~!" },
 	{ "name": "Doorethy", "text": "Like what badd stuffs gonna happen after right??" },
-	{ "name": "Doorethy", "text": "Good luck out there... >< ~~" },
+	{ "name": "Doorethy", "text": "Good luck out there... >< ~~" }
 ],
 
 "MonsterEnding_Bad": [
@@ -404,5 +404,27 @@
 	"WBC27_1": { "name": "White Blood Cell", "text": "Is this existence… or a simulation?!" },
 	"WBC28_1": { "name": "White Blood Cell", "text": "I… have no idea…" },
 	"WBC29_1": { "name": "White Blood Cell", "text": "I hate them… I really do…" }
-  }
+  },
+
+"Level5Good_Entry": [
+	{ "name": "The Egg", "text": "You've chosen the path of wisdom over wrath." },
+	{ "name": "The Egg", "text": "Before you can join with me, you must prove your mind is worthy." },
+	{ "name": "The Egg", "text": "Five trials of knowledge await you at these sacred tables." },
+	{ "name": "The Egg", "text": "Solve each integral correctly, and the way shall open." },
+	{ "name": "The Egg", "text": "But beware... wrong answers carry a price." }
+  ],
+
+"Level5Good_Correct": [
+	{ "name": "The Egg", "text": "Well done. Your mind grows sharper." }
+  ],
+
+"Level5Good_Wrong": [
+	{ "name": "The Egg", "text": "Incorrect. The knowledge wounds you. Try again, or seek another path." }
+  ],
+
+"Level5Good_Victory": [
+	{ "name": "The Egg", "text": "You have proven yourself worthy." },
+	{ "name": "The Egg", "text": "Through patience and wisdom, you have earned your place." },
+	{ "name": "The Egg", "text": "The door opens. Your destiny awaits." }
+  ]
 }
