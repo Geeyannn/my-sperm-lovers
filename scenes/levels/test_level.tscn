@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cofp6hemc4wv8" path="res://scripts/next_zone_enabler.gd" id="3_os2yb"]
 [ext_resource type="PackedScene" uid="uid://ciluydixohjfm" path="res://scenes/abstract_door.tscn" id="4_upsmr"]
 [ext_resource type="PackedScene" uid="uid://bj7gawixh3dxo" path="res://scenes/enemies/white_blood_cell.tscn" id="4_v45ci"]
-[ext_resource type="PackedScene" uid="uid://c1ik22b8i70y5" path="res://scenes/levels/level1.tscn" id="6_qgrpf"]
+[ext_resource type="PackedScene" uid="uid://c1ik22b8i70y5" path="res://scenes/levels/Level1.tscn" id="6_qgrpf"]
 [ext_resource type="Texture2D" uid="uid://c0xigj7fpr2oc" path="res://art/textures/tileset.png" id="7_hfwtw"]
 [ext_resource type="Script" uid="uid://c2lxt2vjdjb4b" path="res://addons/TileMapLayer3D/nodes/static_collision_body.gd" id="8_hfwtw"]
 [ext_resource type="Shape3D" uid="uid://mv5wqumg3vdt" path="res://scenes/levels/test_level_CollisionData/test_level_TileMapLayer3D_collision.res" id="9_2mu0v"]

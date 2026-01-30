@@ -47,6 +47,7 @@ var is_dead: bool = false
 @onready var hp_bar: Node3D = $HPBar
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var dialog_system: Control = $DialogSystem/ControlNode
+@onready var death_sound: AudioStreamPlayer3D = $MeatSound
 
 func _ready() -> void:
 	home_position = global_position
@@ -239,6 +240,7 @@ func die() -> void:
 		GameManager.add_karma_xp(-20.0)  # Bad action: -20 XP
 		if is_aggro:
 			GameManager.on_enemy_died()
+	death_sound.play()
 	make_corpse()
 
 func make_corpse() -> void:

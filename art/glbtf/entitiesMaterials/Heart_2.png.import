@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsf17h74ldynp"
-path="res://.godot/imported/Heart_3.png-fbc982526ebf900c21ef1eca45196f14.ctex"
+uid="uid://dwsq0saw4igbl"
+path="res://.godot/imported/Heart_2.png-cbd06b9914ba5bafae78c503e461fdf3.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "b5cfa9d6c8febd618f91ac2843d50a1c"
+"md5": "964844f67f6d53373d2a7aead3e1565a"
 }
 
 [deps]
 
-source_file="res://art/glbtf/Heart_3.png"
-dest_files=["res://.godot/imported/Heart_3.png-fbc982526ebf900c21ef1eca45196f14.ctex"]
+source_file="res://art/glbtf/entitiesMaterials/Heart_2.png"
+dest_files=["res://.godot/imported/Heart_2.png-cbd06b9914ba5bafae78c503e461fdf3.ctex"]
 
 [params]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwbclvl3scene"]
+[gd_scene load_steps=8 format=3 uid="uid://cwbclvl3scene"]
 
-[ext_resource type="Script" path="res://scripts/white_blood_cell_lvl3.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://copef1xyhl0t8" path="res://scripts/white_blood_cell_lvl3.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://d2j3owkmbdrq1" path="res://art/glbtf/Wcell.glb" id="2_model"]
 [ext_resource type="PackedScene" uid="uid://chpbar3dscene" path="res://scenes/ui/hp_bar_3d.tscn" id="3_hpbar"]
 [ext_resource type="PackedScene" uid="uid://c6sr2w4xbnhs6" path="res://scenes/dialog_system.tscn" id="4_loilr"]
+[ext_resource type="AudioStream" uid="uid://48w0jfekexa7" path="res://sounds/01_wet-squelchy-impact-352302-PSX.wav" id="5_24rbp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tk3an"]
 
@@ -35,3 +36,6 @@ fill_color = Color(0.8, 0.2, 0.2, 1)
 always_visible = false
 
 [node name="DialogSystem" parent="." instance=ExtResource("4_loilr")]
+
+[node name="MeatSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_24rbp")

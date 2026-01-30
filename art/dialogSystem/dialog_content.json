@@ -132,6 +132,62 @@
   { "name": "Doorethy", "text": "I hope you’ll survive what’s next, wiggly guy! :pp" }
 ],
 
+"DoorethyL4_Game0": [
+  { "name": "Doorethy", "text": "ALL RIGHT PEOPLE~~! <3" },
+  { "name": "Doorethy", "text": "LET THE GAMEEE......" },
+  { "name": "Doorethy", "text": "START NA~~ ^^!" }
+],
+
+"DoorethyL4_Game1": {
+  "Line0": { "name": "Doorethy", "text": "It’s now your turn~~!!" },
+  "Line1": { "name": "Doorethy", "text": "Go on—don’t freeze up now!" },
+  "Line2": { "name": "Doorethy", "text": "All eyes on you!" },
+  "Line3": { "name": "Doorethy", "text": "Show us what you’ve got!" },
+  "Line4": { "name": "Doorethy", "text": "No pressure… okay, maybe a little!" }
+},
+
+"DorrethyL4_game2": [
+  { "name": "Doorethy", "text": "You are soooo CLOSE! </3" },
+  { "name": "Doorethy", "text": "YOU almost had it—almost! XDDDD" },
+  { "name": "Doorethy", "text": "Sayang no? One tiny mistake lang~" },
+  { "name": "Doorethy", "text": "Go ahead, try again… I dare you" }
+],
+
+"DorrethyL4_game3": {
+  "Line0": { "name": "Doorethy", "text": "WRONG! Start over LOLZZ XDD" },
+  "Line1": { "name": "Doorethy", "text": "Like, no?? That was sooo not it." },
+  "Line2": { "name": "Doorethy", "text": "XDDD reset muna, okay~?" },
+  "Line3": { "name": "Doorethy", "text": "Try again, ha? I’m literally watching you." },
+  "Line4": { "name": "Doorethy", "text": "Think harder this time nmn baby! ToT" }
+},
+
+"DorrethyL4_game4": [
+  { "name": "Doorethy", "text": "Hmmph! :p I can’t believe nanalo ka talaga..!" },
+  { "name": "Doorethy", "text": "Beginner’s luck lang ‘yan, ha!" },
+  { "name": "Doorethy", "text": "Alright, alright... *sigh*" },
+  { "name": "Doorethy", "text": "Here you go..." },
+  { "name": "Doorethy", "text": "But know I won't go easy on ya to the last level ha! >;D nye! " }
+],
+
+"DorrethyL4_game5": {
+  "Line0": { "name": "Doorethy", "text": "Wow, look at you following rules. Good puppy." },
+  "Line1": { "name": "Doorethy", "text": "Awww~~, like, super impressed ;p" },
+  "Line2": { "name": "Doorethy", "text": "Keep this up, maybe I’ll reward you later~" },
+  "Line3": { "name": "Doorethy", "text": "But, like, don’t get too comfy, okay~?" },
+  "Line4": { "name": "Doorethy", "text": "Rules are fun, not boring, diba?" }
+},
+
+"DorrethyL4_game6": [
+  { "name": "Doorethy", "text": "ARRHGGGG~!! >:(" },
+  { "name": "Doorethy", "text": "YOU—" },
+  { "name": "Doorethy", "text": "I HATE YOU UGHHHHHH >:(((((" },
+  { "name": "Doorethy", "text": "IS THIS GIVING SKILL—" },
+  { "name": "Doorethy", "text": "sigh… seriously, why am I even trying?" },
+  { "name": "Doorethy", "text": "Alright, alright… calm down Doorethy." },
+  { "name": "Doorethy", "text": "Maybe you are too much for me, huh?" },
+  { "name": "Doorethy", "text": "But next time, you’re gonna pay for this." }
+],
+
 "DoorethyEnding_Bad": [
 	{ "name": "Doorethy", "text": ":0000 WHAT IS THAT!!@!@???" },
 	{ "name": "Doorethy", "text": "KILLL THAT THING!!!!@!@!@" },

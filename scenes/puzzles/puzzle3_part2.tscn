@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://b06d8v4togjsy"]
 
-[ext_resource type="Script" uid="uid://cmupj5oby6bq1" path="res://scenes/levels/electricdoor.gd" id="1_nofif"]
+[ext_resource type="Script" uid="uid://cmupj5oby6bq1" path="res://scripts/electricdoor.gd" id="1_nofif"]
 [ext_resource type="Material" uid="uid://cupdd4e00eo2p" path="res://art/glbtf/entitiesMaterials/door/Material.001.tres" id="2_y8p3c"]
-[ext_resource type="Script" uid="uid://u71kt1jo3345" path="res://scenes/levels/pressureplate.gd" id="3_jb7b2"]
+[ext_resource type="Script" uid="uid://u71kt1jo3345" path="res://scripts/pressureplate.gd" id="3_jb7b2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dh8jw"]
 material = ExtResource("2_y8p3c")

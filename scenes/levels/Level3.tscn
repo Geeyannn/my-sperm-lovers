@@ -1,11 +1,11 @@
-[gd_scene load_steps=55 format=4 uid="uid://ckxupilx0417l"]
+[gd_scene load_steps=57 format=4 uid="uid://ckxupilx0417l"]
 
 [ext_resource type="PackedScene" uid="uid://qxin0n6vbcb7" path="res://scenes/player/player.tscn" id="2_vpmgw"]
 [ext_resource type="PackedScene" uid="uid://ciluydixohjfm" path="res://scenes/abstract_door.tscn" id="3_crse0"]
 [ext_resource type="Script" uid="uid://cofp6hemc4wv8" path="res://scripts/next_zone_enabler.gd" id="4_uw6dx"]
 [ext_resource type="Script" uid="uid://c2xaendkngky8" path="res://scripts/camera_follow.gd" id="5_kak5d"]
 [ext_resource type="Script" uid="uid://c2lxt2vjdjb4b" path="res://addons/TileMapLayer3D/nodes/static_collision_body.gd" id="6_ga15p"]
-[ext_resource type="Shape3D" uid="uid://c5xy5qkj4i3gg" path="res://scenes/levels/Level3_TEST_CollisionData/Level3_TEST_TileMapLayer3D_collision.res" id="8_51yjx"]
+[ext_resource type="Shape3D" uid="uid://c5xy5qkj4i3gg" path="res://scenes/levels/Level3_CollisionData/Level3_TEST_TileMapLayer3D_collision.res" id="8_51yjx"]
 [ext_resource type="Texture2D" uid="uid://c0xigj7fpr2oc" path="res://art/textures/tileset.png" id="9_wlmkh"]
 [ext_resource type="Script" uid="uid://4kv8f8ejgwqn" path="res://addons/TileMapLayer3D/nodes/tilemap_layer_3d.gd" id="10_gy8to"]
 [ext_resource type="Material" uid="uid://dcluu5wci6815" path="res://art/glbtf/entitiesMaterials/boss/Material.003.tres" id="10_l0o4u"]
@@ -20,14 +20,15 @@
 [ext_resource type="ArrayMesh" uid="uid://cod70fwihkcd4" path="res://art/glbtf/designsGlb/3dmeshes/Sketchfab_AC3.res" id="22_1kufc"]
 [ext_resource type="ArrayMesh" uid="uid://dynslslr0752x" path="res://art/glbtf/designsGlb/3dmeshes/FAB_TrashBin.res" id="24_vt24o"]
 [ext_resource type="ArrayMesh" uid="uid://562tpx065r02" path="res://art/glbtf/designsGlb/3dmeshes/FAB_TrashOut.res" id="26_ld0cn"]
+[ext_resource type="Shader" uid="uid://dl51w1qcx1676" path="res://art/PSX_shader.gdshader" id="29_l0o4u"]
 [ext_resource type="PackedScene" uid="uid://db5tybnqngmrq" path="res://art/glbtf/designsGlb/Van.glb" id="30_uom1c"]
 [ext_resource type="PackedScene" uid="uid://hy4mbrybw7mr" path="res://scenes/enemies/sibling_sperm.tscn" id="33_tamh3"]
 [ext_resource type="PackedScene" uid="uid://cwbclvl3scene" path="res://scenes/enemies/white_blood_cell_lvl3.tscn" id="34_jjxhi"]
 [ext_resource type="Material" uid="uid://d3xj5v3gqg627" path="res://art/glbtf/entitiesMaterials/pillar/Material.001.tres" id="37_kwcml"]
-[ext_resource type="Script" uid="uid://cmupj5oby6bq1" path="res://scenes/levels/electricdoor.gd" id="43_bolq5"]
-[ext_resource type="Script" uid="uid://c0857kyf7m5ek" path="res://scenes/levels/rigid_body_3d.gd" id="43_uw6dx"]
-[ext_resource type="Script" uid="uid://u71kt1jo3345" path="res://scenes/levels/pressureplate.gd" id="45_wlmkh"]
-[ext_resource type="Script" path="res://scenes/levels/acid.gd" id="47_30go5"]
+[ext_resource type="Script" uid="uid://cmupj5oby6bq1" path="res://scripts/electricdoor.gd" id="43_bolq5"]
+[ext_resource type="Script" uid="uid://c0857kyf7m5ek" path="res://scripts/rigid_body_3d.gd" id="43_uw6dx"]
+[ext_resource type="Script" uid="uid://u71kt1jo3345" path="res://scripts/pressureplate.gd" id="45_wlmkh"]
+[ext_resource type="Script" uid="uid://d21jveh7vyjys" path="res://scripts/acid.gd" id="47_30go5"]
 
 [sub_resource type="Environment" id="Environment_m71o3"]
 background_mode = 1
@@ -198,6 +199,11 @@ size = Vector2(250, 250)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_34wxj"]
 data = PackedVector3Array(125, 0, 125, -125, 0, 125, 125, 0, -125, -125, 0, 125, -125, 0, -125, 125, 0, -125)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f30i7"]
+shader = ExtResource("29_l0o4u")
+shader_parameter/viewport_size = Vector2(640, 480)
+shader_parameter/virtual_res = Vector2(320, 240)
 
 [node name="Node3D" type="Node3D"]
 
@@ -2002,6 +2008,16 @@ mesh = SubResource("PlaneMesh_npdge")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle3/Platform"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.22768)
 shape = SubResource("ConcavePolygonShape3D_34wxj")
+
+[node name="Shader" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_f30i7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="power_changed" from="Puzzle3/Door0/pressureplate" to="Puzzle3/Door0/electricdoor0" method="set_power"]
 [connection signal="power_changed" from="Puzzle3/Door1/pressureplate" to="Puzzle3/Door1/electricdoor1" method="set_power"]

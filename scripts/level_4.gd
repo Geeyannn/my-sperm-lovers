@@ -1,5 +1,8 @@
 extends Node3D
 
+# abstract_door.gd will fetch this
+signal puzzle_completed
+
 @onready var organs = {
 	"red": get_node("RedOrgan"),
 	"blue": get_node("BlueOrgan"),
@@ -7,6 +10,11 @@ extends Node3D
 	"yellow": get_node("YellowOrgan")
 }
 @onready var fuse_box: StaticBody3D = $FuseBox
+@onready var dialog_system: Control = $DialogSystem/ControlNode
+@onready var BUZZER: AudioStreamPlayer = $Buzz
+@onready var CORRECT: AudioStreamPlayer = $Correct
+@onready var CHEER: AudioStreamPlayer = $Cheer
+@onready var LAUGH: AudioStreamPlayer = $Laugh
 
 var current_sequence = []
 var player_sequence = []
@@ -28,6 +36,7 @@ func _ready():
 	# Connect fuse box destruction signal
 	if fuse_box:
 		fuse_box.destroyed.connect(_on_fuse_box_destroyed)
+		print("FuseBox Door now connected")
 	
 	print("Simon Says initialized!")
 	await get_tree().create_timer(1.0).timeout
@@ -43,7 +52,7 @@ func glow_organ(color: String):
 	
 	var tween = create_tween()
 	tween.tween_property(organ, "scale", Vector3(1.15, 1.15, 1.15), 0.15)
-
+	CORRECT.play()
 func unglow_organ(color: String):
 	var organ = organs[color]
 	var normal_mesh = organ.get_node("Normal")
@@ -56,39 +65,32 @@ func unglow_organ(color: String):
 	tween.tween_property(organ, "scale", Vector3(1.0, 1.0, 1.0), 0.15)
 
 # Connect these functions to each Area3D's input_event signal
-func _on_red_area_input_event(camera, event, click_position, click_normal, shape_idx):
+func _on_red_area_input_event(_camera, event, _click_position, _click_normal, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		check_input("red")
-
-func _on_blue_area_input_event(camera, event, click_position, click_normal, shape_idx):
+func _on_blue_area_input_event(_camera, event, _click_position, _click_normal, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		check_input("blue")
-
-func _on_green_area_input_event(camera, event, click_position, click_normal, shape_idx):
+func _on_green_area_input_event(_camera, event, _click_position, _click_normal, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		check_input("green")
-
-func _on_yellow_area_input_event(camera, event, click_position, click_normal, shape_idx):
+func _on_yellow_area_input_event(_camera, event, _click_position, _click_normal, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		check_input("yellow")
 
 func start_game():
 	current_round = 1
 	current_sequence = []
-	show_doorethy_dialogue("Alright, let's see if you have ANY culture. Watch closely, peasant.")
-	await get_tree().create_timer(2.0).timeout
+	dialog_system.start_dialogue("DoorethyL4_Game0")
+	await dialog_system.dialogue_finished
 	next_round()
 
 func next_round():
 	is_player_turn = false
 	player_sequence = []
-	
 	var colors = ["red", "blue", "green", "yellow"]
 	current_sequence.append(colors[randi() % colors.size()])
-	
-	show_doorethy_dialogue("Round %d. Try to keep up." % current_round)
 	await get_tree().create_timer(1.5).timeout
-	
 	show_sequence()
 
 func show_sequence():
@@ -102,14 +104,14 @@ func show_sequence():
 	
 	is_showing_sequence = false
 	is_player_turn = true
-	show_doorethy_dialogue("Your turn. Don't embarrass yourself.")
+	dialog_system.start_dialogue("DoorethyL4_Game1") # "Now YOUR TURNN~!"
+	await dialog_system.dialogue_finished
 
 func check_input(color: String):
 	# Critical FIX: Don't process input if not in player turn, showing sequence, or game is over
 	if not is_player_turn or is_showing_sequence or current_round > 10 or game_ended:
 		print("Input ignored - not player's turn or game over")
 		return
-	
 	print("Player selected: ", color)
 	
 	glow_organ(color)
@@ -126,10 +128,18 @@ func check_input(color: String):
 	if color != current_sequence[step]:
 		# Implies, player made a mistake, thus, Immediately stop accepting input
 		is_player_turn = false  
+		
 		if current_round == 9:
-			show_doorethy_dialogue("HAHAHAHA! You were SO CLOSE! Round 9! Back to Round 1, loser!")
+			dialog_system.start_dialogue("DorrethyL4_game2")
+			BUZZER.play()
+			LAUGH.play()
+			await dialog_system.dialogue_finished
 		else:
-			show_doorethy_dialogue("WRONG! Start over, nerd.")
+			dialog_system.start_dialogue("DorrethyL4_game3")
+			BUZZER.play()
+			LAUGH.play()
+			await dialog_system.dialogue_finished
+			
 		await get_tree().create_timer(2.0).timeout
 		reset_game()
 		return
@@ -139,17 +149,20 @@ func check_input(color: String):
 		is_player_turn = false
 		
 		# Reward patience with karma (+5 per round completed)
-		if GameManager:
-			GameManager.add_karma_xp(5.0)
-		
+		if GameManager: GameManager.add_karma_xp(20.0)
 		if current_round == 10:
-			show_doorethy_dialogue("Ugh... FINE. I suppose you ARE cultured. You may pass.")
-			await get_tree().create_timer(2.0).timeout
-			open_door()
+			# load an conversation related: "Ugh... FINE. I suppose you ARE cultured. You may pass."
+			dialog_system.start_dialogue("DorrethyL4_game4")
+			CHEER.play()
+			await dialog_system.dialogue_finished
+			complete_puzzle()
 		else:
 			current_round += 1
-			show_doorethy_dialogue("Wow, look at you following rules. Good puppy.")
-			await get_tree().create_timer(1.5).timeout
+			# SAGING loads a DICTIONARY of strings similar to: "Wow, look at you following rules. Good puppy."
+			dialog_system.start_dialogue("DorrethyL4_game5")
+			CHEER.play()
+			await dialog_system.dialogue_finished
+			await get_tree().create_timer(2.0).timeout
 			next_round()
 
 func reset_game():
@@ -159,36 +172,21 @@ func reset_game():
 	await get_tree().create_timer(1.0).timeout
 	next_round()
 
-func show_doorethy_dialogue(text: String):
-	print("Doorethy: ", text)
-
-func open_door():
-	if game_ended:
-		return
-	game_ended = true
-	print("Door opens! You win!")
-
 # === VIOLENCE PATH: Fuse Box Destruction ===
 func _on_fuse_box_destroyed() -> void:
-	if game_ended:
-		return
-	
+	if game_ended: return
 	# Stop the Simon Says game immediately
 	is_player_turn = false
 	is_showing_sequence = false
 	
-	# Doorethy's anguished response
-	show_doorethy_dialogue("AAAAARGH!! MY HEART! YOU... YOU MONSTER!")
-	await get_tree().create_timer(1.5).timeout
-	show_doorethy_dialogue("You could have just played the game... but NO... you chose VIOLENCE!")
-	await get_tree().create_timer(2.0).timeout
-	show_doorethy_dialogue("Fine! FINE! The door is open! I hope you're HAPPY, you BRUTE!")
-	await get_tree().create_timer(1.5).timeout
+	dialog_system.start_dialogue("DorrethyL4_game6")
+	await dialog_system.dialogue_finished
 	
-	# Force the door open
-	open_door_violently()
+	# Complet puzzle
+	complete_puzzle()
 
-func open_door_violently():
+func complete_puzzle() -> void:
+	if game_ended: return
 	game_ended = true
-	print("Door FORCED open through violence!")
-	# TODO: Add door slam animation, sparks, etc.
+	emit_signal("puzzle_completed")
+	print("emitted puzzle is now complete (EXPECTED: door will react)")

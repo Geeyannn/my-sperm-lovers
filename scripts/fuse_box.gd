@@ -15,6 +15,7 @@ signal destroyed
 
 @onready var hp_bar: Node3D = $HPBar
 @onready var mesh: Node3D = $Heart  # The visual mesh
+@onready var hit_sound: AudioStreamPlayer3D = $AttackSound
 
 func _ready() -> void:
 	health = max_health
@@ -46,8 +47,9 @@ func take_damage(amount: int) -> bool:
 	if hp_bar:
 		hp_bar.update_health(health, max_health)
 	
-	# Visual feedback - flash red or shake
+	# Visual feedback - shake and play effect
 	_damage_feedback()
+	hit_sound.play()
 	
 	if health <= 0:
 		die()
@@ -55,18 +57,15 @@ func take_damage(amount: int) -> bool:
 	return false
 
 func _damage_feedback() -> void:
-	if not mesh:
-		return
+	if not mesh: return
 	# Quick scale punch on hit
 	var tween = create_tween()
 	tween.tween_property(mesh, "scale", base_scale * 1.3, 0.05)
 	tween.tween_property(mesh, "scale", base_scale, 0.1)
 
 func die() -> void:
-	if is_dead:
-		return
-	is_dead = true
-	
+	if is_dead: return
+	is_dead = true	
 	print("Fuse Box destroyed!")
 	
 	# Spawn death effect
@@ -82,8 +81,7 @@ func die() -> void:
 	
 	# Karma penalty for violence
 	if GameManager:
-		GameManager.add_karma_xp(-25.0)  # Big karma hit for destroying the heart
-	
+		GameManager.add_karma_xp(-20.0)  # Big karma hit for destroying the heart
 	# Signal the level that we're destroyed
 	destroyed.emit()
 	

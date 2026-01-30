@@ -1,12 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bthqkxn20mj0j"]
+[gd_scene load_steps=7 format=3 uid="uid://bthqkxn20mj0j"]
 
 [ext_resource type="PackedScene" uid="uid://cfuy7utv00ig5" path="res://art/glbtf/Heart.fbx" id="1_5roc7"]
 [ext_resource type="PackedScene" uid="uid://chpbar3dscene" path="res://scenes/ui/hp_bar_3d.tscn" id="2_46ce0"]
-[ext_resource type="Script" path="res://scripts/fuse_box.gd" id="3_script"]
+[ext_resource type="Script" uid="uid://b244lt0xmfspo" path="res://scripts/fuse_box.gd" id="3_script"]
+[ext_resource type="AudioStream" uid="uid://48w0jfekexa7" path="res://sounds/01_wet-squelchy-impact-352302-PSX.wav" id="4_8v7k2"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8v7k2"]
-radius = 0.8417969
-height = 2.6513672
+[sub_resource type="BoxShape3D" id="BoxShape3D_8v7k2"]
+size = Vector3(2.1606445, 2.3588867, 1.66156)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lu7a5"]
 radius = 1.5
@@ -15,10 +15,8 @@ radius = 1.5
 script = ExtResource("3_script")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_8v7k2")
-
-[node name="Heart" parent="." instance=ExtResource("1_5roc7")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.040039063, -0.021240234, 0.18960571)
+shape = SubResource("BoxShape3D_8v7k2")
 
 [node name="AttackHitbox" type="Area3D" parent="."]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0.079933524, -0.23713809)
@@ -31,3 +29,9 @@ shape = SubResource("SphereShape3D_lu7a5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 fill_color = Color(0.8, 0.2, 0.2, 1)
 always_visible = false
+
+[node name="Heart" parent="." instance=ExtResource("1_5roc7")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_8v7k2")
