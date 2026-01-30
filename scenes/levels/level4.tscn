@@ -272,7 +272,7 @@ omni_range = 7.206023
 
 [node name="Player" parent="." instance=ExtResource("6_2xj4m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.812, 0)
-move_speed = 30.0
+move_speed = 8.0
 
 [node name="SimonSays" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.587055, 3.8024015, -63.016495)
