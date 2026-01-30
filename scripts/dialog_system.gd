@@ -106,7 +106,6 @@ func _pick_random_line(value) -> Dictionary:
 			return {}
 		
 		# Start from the first valid index (instead of random)
-		# This prevents skipping early lines unintentionally
 		var start_idx = valid_indices[0]
 		var first = value[start_idx].duplicate()
 		first["__array__"] = value
@@ -137,7 +136,6 @@ func _process(delta: float) -> void:
 	text_label.visible_characters += int(delta * text_speed) + 1
 	text_label.visible_characters = mini(text_label.visible_characters, total)
 
-	# 🔊 play sound for EACH new character
 	for i in range(prev_chars, text_label.visible_characters):
 		var char := text_label.text[i]
 
